@@ -12,3 +12,10 @@ export const signOut = () => {
     type: SIGN_OUT
   };
 };
+
+export const createStream = formData => {
+  return {
+    type: "CREATE_STREAM",
+    payload: formData
+  };
+};
