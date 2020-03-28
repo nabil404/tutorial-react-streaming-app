@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import createStreamReducer from "./createStreamReducer";
+import streamReducer from "./streamReducer";
 
 export default combineReducers({
   auth: authReducer,
-  createNewStream: createStreamReducer
+  streams: streamReducer
 });

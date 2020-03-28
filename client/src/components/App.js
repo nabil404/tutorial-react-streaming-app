@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
+import history from "../history";
 
 // Components
 import Header from "./Header";
@@ -12,7 +13,7 @@ import StreamShow from "./streams/StreamShow";
 const App = () => {
   return (
     <div className="ui container">
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
           <Route path="/" exact component={StreamList} />
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/streams/delete" component={StreamDelete} />
           <Route path="/stream/show" component={StreamShow} />
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
