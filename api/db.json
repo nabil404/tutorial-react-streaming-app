@@ -1,16 +1,10 @@
 {
   "streams": [
     {
-      "title": "Stream 1 Title",
-      "description": "Stream 1 Description",
+      "title": "asdasd",
+      "description": "asdasd",
       "userId": "102566418225049287544",
       "id": 1
-    },
-    {
-      "title": "Stream 2 Title",
-      "description": "Stream 2 Description",
-      "userId": "102566418225049287544",
-      "id": 2
     }
   ]
 }
