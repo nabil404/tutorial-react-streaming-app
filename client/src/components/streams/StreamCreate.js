@@ -1,55 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-
 import { createStream } from "../../actions";
+import StreamForm from "./StreamForm";
 
 const StreamCreate = props => {
+  const onSubmit = formData => {
+    return props.create(formData);
+  };
+
   return (
-    <Formik
-      initialValues={{ title: "", description: "" }}
-      onSubmit={values => {
-        props.create(values);
-      }}
-      validate={values => {
-        const errors = {};
-        if (!values.title) {
-          errors.title = "You must provide a title";
-        }
-        if (!values.description) {
-          errors.description = "You must provide a description";
-        }
-        return errors;
-      }}
-    >
-      {({ isSubmitting }) => {
-        return (
-          <Form className="ui form">
-            <div className="field">
-              <label>Title</label>
-              <Field type="text" name="title" placeholder="Title" />
-              <ErrorMessage
-                name="title"
-                component="div"
-                className="ui red message"
-              />
-            </div>
-            <div className="field">
-              <label>Description</label>
-              <Field type="text" name="description" placeholder="Description" />
-              <ErrorMessage
-                name="description"
-                component="div"
-                className="ui red message"
-              />
-            </div>
-            <button className="ui button primary" type="submit">
-              Submit
-            </button>
-          </Form>
-        );
-      }}
-    </Formik>
+    <div>
+      <h3>Create a stream</h3>
+      <StreamForm onSubmit={onSubmit} />
+    </div>
   );
 };
 

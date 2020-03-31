@@ -1,4 +1,5 @@
 import streams from "../api/streams";
+import history from "../history";
 import * as TYPE from "./types";
 
 export const signIn = userId => {
@@ -15,12 +16,14 @@ export const signOut = () => {
 };
 
 export const createStream = formData => {
-  return async dispatch => {
-    const response = await streams.post("/streams", formData);
+  return async (dispatch, getState) => {
+    const { userId } = getState().auth;
+    const response = await streams.post("/streams", { ...formData, userId });
     dispatch({
       type: TYPE.CREATE_STREAM,
       payload: response.data
     });
+    history.push("/");
   };
 };
 
@@ -46,11 +49,12 @@ export const fetchStream = id => {
 
 export const editStream = (id, formData) => {
   return async dispatch => {
-    const response = await streams.put(`/streams/${id}`, formData);
+    const response = await streams.patch(`/streams/${id}`, formData);
     dispatch({
       type: TYPE.EDIT_STREAM,
       payload: response.data
     });
+    history.push("/");
   };
 };
 
